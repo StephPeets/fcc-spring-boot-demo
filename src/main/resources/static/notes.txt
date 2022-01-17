@@ -1,6 +1,9 @@
 January 16, 2022
 
 
+Annotations:
+    @Service is more specific than @Component, essentially means same thing
+
 List.of()
 
     - creates a list of properties in JSON array format
@@ -27,10 +30,73 @@ List.of()
 
 Business Logic & MVCs
 
-Make a "view and then a model that applies to my view. This model only has what is relevant to my view - including data annotations and validation rules. The controller only houses logic for building the model. I have a service layer which houses all business logic. My controllers call my service layer. Beyond that is my repository layer."
+Make a "view and then a model that applies to my view. This model only has what is relevant to my view - including data
+annotations and validation rules. The controller only houses logic for building the model. I have a service layer which
+houses all business logic. My controllers call my service layer. Beyond that is my repository layer."
 
-"Another benefit to so many layers is that if architected correctly, you can use structuremap or another IoC container and swap out pieces without detrimentally affecting your application."
+"Another benefit to so many layers is that if architected correctly, you can use structuremap or another IoC container
+ and swap out pieces without detrimentally affecting your application."
 
-"Controller code should only be code targeted at the view. Show this, hide that, etc. The service layer should house the business logic for your app. The repository layer should be relatively dumb - devoid of business logic and only query your data and return your domain objects. By separating the view models from the domain model, you have much more flexibility when it comes to custom validation rules. It also means you don't have to dump every piece of data into your view in hidden fields and push it back and forth between the client and server (or rebuild it on the backend). Your view model will then house only the information relevant to the view - and it can be customized to have bools for view logic or counts or enums so that the view itself isn't cluttered up with complicated logic statements"
+"Controller code should only be code targeted at the view. Show this, hide that, etc. The service layer should house
+the business logic for your app. The repository layer should be relatively dumb - devoid of business logic and only
+query your data and return your domain objects. By separating the view models from the domain model, you have much more
+flexibility when it comes to custom validation rules. It also means you don't have to dump every piece of data into
+your view in hidden fields and push it back and forth between the client and server (or rebuild it on the backend).
+Your view model will then house only the information relevant to the view - and it can be customized to have booleans
+for view logic or counts or enums so that the view itself isn't cluttered up with complicated logic statements"
 
 (from https://stackoverflow.com/questions/4565681/where-does-the-business-logic-layer-fit-in-to-an-mvc-application)
+
+--------------------------------------------------------------------------------
+
+Dependency Injection v Dependency Lookup
+
+Use Dependency Injection over lookup as much as possible.
+
+- Dependency Injection is a design pattern that removes the dependency of the programs. In such case we provide the
+information from the external source such as XML file. It makes our code loosely coupled and easier for testing.
+
+    Example using Dependency Injection (by Constructor)
+
+    =>  public class StudentController {
+
+            private final StudentService studentService;
+
+            @Autowired
+            public StudentController(StudentService studentService) {
+                this.studentService = studentService;
+            }
+
+
+- Dependency Lookup is an approach where we get the resource after demand by, for example, using the "new" keyword
+
+    Problems of Dependency Lookup:
+
+        There are mainly two problems of dependency lookup.
+
+        1. tight coupling: The dependency lookup approach makes the code tightly coupled. If resource is changed, we
+        need to perform a lot of modification in the code.
+
+        2. Not easy for testing: This approach creates a lot of problems while testing the application especially in
+        black box testing.
+
+    Example using Dependency Lookup
+
+        =>  public class StudentController {
+
+            private final StudentService studentService;
+
+            public StudentController(StudentService studentService) {
+                this.studentService = new StudentService();
+            }
+
+-------------------------------------------------------------------------------
+
+@Service annotation
+
+This annotation serves as a specialization of @Component, allowing for implementation classes to be autodetected
+through classpath scanning.
+
+Indicates that an annotated class is a "Service" component.
+
+---------------------------------------------------------------------------------
