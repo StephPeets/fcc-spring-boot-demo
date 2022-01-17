@@ -22,3 +22,15 @@ List.of()
     Example output:
 
         [{"id":1,"name":"Janet","email":"janet@email.com","dob":"1990-04-05","age":31}]
+
+--------------------------------------------------------------------------------
+
+Business Logic & MVCs
+
+Make a "view and then a model that applies to my view. This model only has what is relevant to my view - including data annotations and validation rules. The controller only houses logic for building the model. I have a service layer which houses all business logic. My controllers call my service layer. Beyond that is my repository layer."
+
+"Another benefit to so many layers is that if architected correctly, you can use structuremap or another IoC container and swap out pieces without detrimentally affecting your application."
+
+"Controller code should only be code targeted at the view. Show this, hide that, etc. The service layer should house the business logic for your app. The repository layer should be relatively dumb - devoid of business logic and only query your data and return your domain objects. By separating the view models from the domain model, you have much more flexibility when it comes to custom validation rules. It also means you don't have to dump every piece of data into your view in hidden fields and push it back and forth between the client and server (or rebuild it on the backend). Your view model will then house only the information relevant to the view - and it can be customized to have bools for view logic or counts or enums so that the view itself isn't cluttered up with complicated logic statements"
+
+(from https://stackoverflow.com/questions/4565681/where-does-the-business-logic-layer-fit-in-to-an-mvc-application)
