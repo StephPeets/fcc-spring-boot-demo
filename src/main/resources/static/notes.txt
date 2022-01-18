@@ -100,3 +100,50 @@ through classpath scanning.
 Indicates that an annotated class is a "Service" component.
 
 ---------------------------------------------------------------------------------
+
+Mapping Database
+
+@Entity
+        - for hibernate
+        - javax.persistence.Entity
+@Table
+        - for... database?
+        - javax.persistence.Table
+        - Specifies the primary table for the annotated entity
+public class Example {
+    @Id
+        - Specifies the primary key of an entity
+        - javax.persistence.Id
+	@SequenceGenerator( <see SequenceGenerator parameters> )
+        - Defines a primary key generator that may be referenced by name when a generator element is specified for the
+        GeneratedValue annotation.
+        - javax.persistence.SequenceGenerator
+        - SequenceGenerator parameters:
+            @SequenceGenerator(
+                name = "student_sequence", => A unique generator name that can be referenced by one or more classes to
+                                              be the generator for primary key values
+                                              - (Required)
+                                              - Data type is String
+
+          		sequenceName = "student_sequence", => The name of the database sequence object from which to
+          		                                      obtain primary key values.
+                                                      - (Optional)
+                                                      - Data type is String
+                                                      - Default value is ""
+
+          	    allocationSize = 1 => The amount to increment by when allocating sequence
+          	                          numbers from the sequence.
+                                      - (Optional)
+                                      - Data type is int
+                                      - Default value is 50
+            )
+	@GeneratedValue(
+		strategy = GenerationType.SEQUENCE,
+	    generator = "student_sequence"
+	)
+
+    private Long id;
+    private String exampleName;
+
+
+}
