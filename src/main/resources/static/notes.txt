@@ -34,7 +34,7 @@ Make a "view and then a model that applies to my view. This model only has what 
 annotations and validation rules. The controller only houses logic for building the model. I have a service layer which
 houses all business logic. My controllers call my service layer. Beyond that is my repository layer."
 
-"Another benefit to so many layers is that if architected correctly, you can use structuremap or another IoC container
+"Another benefit to so many layers is that if architected correctly, you can use "structuremap" or another IoC container
  and swap out pieces without detrimentally affecting your application."
 
 "Controller code should only be code targeted at the view. Show this, hide that, etc. The service layer should house
@@ -94,7 +94,7 @@ information from the external source such as XML file. It makes our code loosely
 
 @Service annotation
 
-This annotation serves as a specialization of @Component, allowing for implementation classes to be autodetected
+This annotation serves as a specialization of @Component, allowing for implementation classes to be "autodetected"
 through classpath scanning.
 
 Indicates that an annotated class is a "Service" component.
