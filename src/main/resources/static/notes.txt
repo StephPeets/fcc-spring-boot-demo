@@ -147,3 +147,7 @@ public class Example {
 
 
 }
+
+---------------------------------------------------------------------------------------
+@RequestBody
+Annotation indicating a method parameter should be bound to the body of the web request.
