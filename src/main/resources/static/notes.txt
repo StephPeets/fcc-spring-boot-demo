@@ -154,3 +154,22 @@ Annotation indicating a method parameter should be bound to the body of the web 
 
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
+
+January 20, 2022 - Zoom Meet
+
+Run front-end on one port
+Run back-end on different port (ex. localhost:8080)
+
+GET POST PUT DELETE
+
+netify for hosting on the web
+
+what is heroku?
+what is yarn?
+
+quote-generator
+to-do
+
+
+Maven
+What is an epic?
